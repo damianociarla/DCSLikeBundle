@@ -95,6 +95,13 @@ class LikeController extends Controller
             $threadManager->patch($thread);
         }
 
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('DCSLikeBundle:Like:link.html.twig', array(
+                'thread' => $thread,
+                'isLiked' => true,
+            ));
+        }
+
         if (null === $redirectUri = $request->headers->get('referer', $thread->getPermalink())) {
             return $this->render('@DCSLike/Like/liked.html.twig', array(
                 'thread' => $thread,
@@ -124,6 +131,13 @@ class LikeController extends Controller
 
         if (null !== $like = $likeManager->findOneByThreadAndUser($thread, $securityContext->getToken()->getUser())) {
             $likeManager->remove($like);
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('DCSLikeBundle:Like:link.html.twig', array(
+                'thread' => $thread,
+                'isLiked' => false,
+            ));
         }
 
         if (null === $redirectUri = $request->headers->get('referer', $thread->getPermalink())) {

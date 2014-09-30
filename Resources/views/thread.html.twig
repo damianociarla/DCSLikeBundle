@@ -1,7 +1,11 @@
-{{ render(
+{% set dcsPermalink = permalink|default(app.request.uri) %}
+{% set dcsLikeThreadId = id|default(dcsPermalink) %}
+
+<span class="dcs-like-container">
+    {{ render(
         controller('DCSLikeBundle:Like:getLink', {
-            'id' : id|default(null),
-            'permalink' : permalink|default(app.request.uri)
-        }
-   ))
-}}
+            'id' : dcsLikeThreadId,
+            'permalink' : dcsPermalink
+        })
+    ) }}
+</span>
