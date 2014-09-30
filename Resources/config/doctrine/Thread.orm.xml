@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="DCS\LikeBundle\Entity\Thread">
+
+        <id name="id" column="id" type="string" />
+
+        <field name="numLikes" column="num_likes" type="integer" />
+
+        <field name="lastLikeAt" column="last_like_at" type="datetime" nullable="true" />
+
+        <field name="permalink" column="permalink" type="string" nullable="true" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>

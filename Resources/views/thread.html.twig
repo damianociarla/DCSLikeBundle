@@ -1,0 +1,7 @@
+{{ render(
+        controller('DCSLikeBundle:Like:getLink', {
+            'id' : id|default(null),
+            'permalink' : permalink|default(app.request.uri)
+        }
+   ))
+}}

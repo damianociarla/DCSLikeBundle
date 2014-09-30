@@ -32,3 +32,13 @@
 
 # Composer PHAR
 /composer.phar
+
+# PhpStorm
+.idea/DCSLikeBundle.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+.idea/.name
+.idea/workspace.xml

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="it" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label.like">
+                <source>label.like</source>
+                <target>Mi piace</target>
+            </trans-unit>
+            <trans-unit id="label.unlike">
+                <source>label.unlike</source>
+                <target>Non mi piace più</target>
+            </trans-unit>
+            <trans-unit id="message.like_content">
+                <source>message.like_content</source>
+                <target>Ti piace questo contenuto</target>
+            </trans-unit>
+            <trans-unit id="message.unlike_content">
+                <source>message.unlike_content</source>
+                <target>Non ti piace più questo contenuto</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

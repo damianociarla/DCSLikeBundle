@@ -1,0 +1,6 @@
+{% trans_default_domain 'DCSLikeBundle' %}
+{% if not isLiked %}
+    <a href="{{ url('dcs_like', {'id' : thread.id}) }}">{{ 'label.like'|trans }}</a>
+{% else %}
+    <a href="{{ url('dcs_unlike', {'id' : thread.id}) }}">{{ 'label.unlike'|trans }}</a>
+{% endif %}
