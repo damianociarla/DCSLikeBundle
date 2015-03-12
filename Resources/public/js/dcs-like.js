@@ -3,7 +3,7 @@ $(function () {
         event.preventDefault();
         var element = $(this);
         $.get(element.attr('href'), function (data) {
-            element.parent('.dcs-like-container').html(data);
+            element.parents('.dcs-like-container').html(data);
         });
     });
 });
