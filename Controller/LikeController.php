@@ -103,7 +103,7 @@ class LikeController extends Controller
         }
 
         if (null === $redirectUri = $request->headers->get('referer', $thread->getPermalink())) {
-            return $this->render('@DCSLike/Like/liked.html.twig', array(
+            return $this->render('DCSLikeBundle:Like:liked.html.twig', array(
                 'thread' => $thread,
             ));
         }
@@ -141,7 +141,7 @@ class LikeController extends Controller
         }
 
         if (null === $redirectUri = $request->headers->get('referer', $thread->getPermalink())) {
-            return $this->render('@DCSLike/Like/unliked.html.twig', array(
+            return $this->render('DCSLikeBundle:Like:unliked.html.twig', array(
                 'thread' => $thread,
             ));
         }
