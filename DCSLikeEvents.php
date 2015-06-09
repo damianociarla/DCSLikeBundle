@@ -5,6 +5,39 @@ namespace DCS\LikeBundle;
 class DCSLikeEvents
 {
     /**
+     * The AFTER_LOAD_THREAD event occurs after the Thread is loaded.
+     *
+     * The listener receives a:
+     * DCS\LikeBundle\Event\ThreadResponseEvent instance.
+     *
+     * @see \DCS\LikeBundle\Event\ThreadResponseEvent
+     * @var string
+     */
+    const LINK_ACTION_AFTER_LOAD_THREAD = 'dcs_like.event.link_action.after_load_thread';
+
+    /**
+     * The AFTER_LOAD_THREAD event occurs after the Thread is loaded.
+     *
+     * The listener receives a:
+     * DCS\LikeBundle\Event\ThreadResponseEvent instance.
+     *
+     * @see \DCS\LikeBundle\Event\ThreadResponseEvent
+     * @var string
+     */
+    const LIKE_ACTION_AFTER_LOAD_THREAD = 'dcs_like.event.like_action.after_load_thread';
+
+    /**
+     * The AFTER_LOAD_THREAD event occurs after the Thread is loaded.
+     *
+     * The listener receives a:
+     * DCS\LikeBundle\Event\ThreadResponseEvent instance.
+     *
+     * @see \DCS\LikeBundle\Event\ThreadResponseEvent
+     * @var string
+     */
+    const UNLIKE_ACTION_AFTER_LOAD_THREAD = 'dcs_like.event.unlike_action.after_load_thread';
+
+    /**
      * The PRE_PERSIST event occurs prior to the persistence backend persisting the Thread.
      *
      * This event allows you to modify the data in the Thread prior to persisting occuring.

@@ -2,6 +2,9 @@
 
 namespace DCS\LikeBundle\Controller;
 
+use DCS\LikeBundle\DCSLikeEvents;
+use DCS\LikeBundle\Event\ThreadEvent;
+use DCS\LikeBundle\Event\ThreadResponseEvent;
 use DCS\LikeBundle\Model\LikeManagerInterface;
 use DCS\LikeBundle\Model\ThreadManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -42,6 +45,13 @@ class LikeController extends Controller
             $threadManager->save($thread);
         }
 
+        $event = new ThreadResponseEvent($thread);
+        $this->get('event_dispatcher')->dispatch(DCSLikeEvents::LINK_ACTION_AFTER_LOAD_THREAD, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
         $isLiked = false;
 
         if (null !== $user = $securityContext->getToken()->getUser()) {
@@ -74,6 +84,13 @@ class LikeController extends Controller
 
         if (null === $thread = $threadManager->findOneById($id)) {
             throw new NotFoundHttpException();
+        }
+
+        $event = new ThreadResponseEvent($thread);
+        $this->get('event_dispatcher')->dispatch(DCSLikeEvents::LIKE_ACTION_AFTER_LOAD_THREAD, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
         }
 
         /** @var LikeManagerInterface $likeManager */
@@ -124,6 +141,13 @@ class LikeController extends Controller
 
         if (null === $thread = $threadManager->findOneById($id)) {
             throw new NotFoundHttpException();
+        }
+
+        $event = new ThreadResponseEvent($thread);
+        $this->get('event_dispatcher')->dispatch(DCSLikeEvents::UNLIKE_ACTION_AFTER_LOAD_THREAD, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
         }
 
         /** @var LikeManagerInterface $likeManager */
