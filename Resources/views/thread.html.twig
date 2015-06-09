@@ -1,7 +1,7 @@
 {% set dcsPermalink = permalink|default(app.request.uri) %}
 {% set dcsLikeThreadId = id|default(dcsPermalink) %}
 
-<span class="dcs-like-container">
+<span class="dcs-like-container" data-dcs-like-thread-id="{{ dcsLikeThreadId }}">
     {{ render(
         controller('DCSLikeBundle:Like:getLink', {
             'id' : dcsLikeThreadId,
