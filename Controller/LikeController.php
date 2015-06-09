@@ -23,14 +23,6 @@ class LikeController extends Controller
             throw new \Exception('Thread id must be set');
         }
 
-        $securityContext = $this->get('security.context');
-
-        if (!$this->container->getParameter('dcs_like.allow_anonymous') &&
-            !$securityContext->isGranted('IS_AUTHENTICATED_FULLY')
-        ) {
-            return new Response();
-        }
-
         if (null === $id) {
             $id = $request->getUri();
         }
@@ -49,6 +41,21 @@ class LikeController extends Controller
         $this->get('event_dispatcher')->dispatch(DCSLikeEvents::LINK_ACTION_AFTER_LOAD_THREAD, $event);
 
         if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
+        $securityContext = $this->get('security.context');
+
+        if (!$this->container->getParameter('dcs_like.allow_anonymous') &&
+            !$securityContext->isGranted('IS_AUTHENTICATED_FULLY')
+        ) {
+            $event = new ThreadResponseEvent($thread);
+            $this->get('event_dispatcher')->dispatch(DCSLikeEvents::LINK_UNAUTHORIZED_RESPONSE, $event);
+
+            if (null === $response = $event->getResponse()) {
+                return new Response();
+            }
+
             return $response;
         }
 

@@ -16,6 +16,17 @@ class DCSLikeEvents
     const LINK_ACTION_AFTER_LOAD_THREAD = 'dcs_like.event.link_action.after_load_thread';
 
     /**
+     * The AFTER_LOAD_THREAD event occurs when unauthorized check.
+     *
+     * The listener receives a:
+     * DCS\LikeBundle\Event\ThreadResponseEvent instance.
+     *
+     * @see \DCS\LikeBundle\Event\ThreadResponseEvent
+     * @var string
+     */
+    const LINK_UNAUTHORIZED_RESPONSE = 'dcs_like.event.link_unauthorized_response';
+
+    /**
      * The AFTER_LOAD_THREAD event occurs after the Thread is loaded.
      *
      * The listener receives a:
